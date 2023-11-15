@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/Head.ejs') %>
+    <body>
+        <%- include('./partials/create.ejs') %>
+
+        <div style="justify-content: center; display: flex;">
+            <form class="createForm" action="/createtask" method="Post">
+                <label class="label" for="title">Title:</label>
+                <input class="formTitle" name="title" required type="text"/>
+                <label class="label" for="body">Body:</label>
+                <textarea class="formBody" name="body" required type="text"></textarea>
+                <button class="submitButton">Submit Task</button>
+            </form>
+        </div>
+
+    </body>
+</html>

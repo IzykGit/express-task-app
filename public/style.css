@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+
+* {
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+.tasksHead {
+    position: relative;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px 0 40px;
+    width: 75%;
+    max-width: 75%;
+    font-size: 30px;
+    margin: 50px 0 50px 0;
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.link:hover {
+    color: white;
+    background-color: black;
+
+}
+
+.task {
+    width: 75%;
+    max-width: 75%;
+    font-size: 15px;
+    padding: 15px;
+    margin: 20px 0 20px 0;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 20px;
+    box-shadow: 1px 1px 25px 5px rgb(201, 201, 201);
+}
+
+.task:hover {
+    padding: 20px;
+    box-shadow: 1px 1px 25px 5px slategrey;
+}
+
+.createForm {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    max-width: 300px;
+}
+
+.label {
+    margin: 10px 0 10px 0;
+    font-size: 25px;
+}
+
+.formTitle {
+    padding: 5px;
+}
+
+.formBody {
+    padding: 5px;
+    height: 100px;
+    width: 300px;
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 500px;
+    margin-bottom: 30px;
+}
+
+.submitButton {
+    width: 150px;
+    align-self: center;
+}
+
+.details {
+    width: 60%;
+    max-width: 60%;
+    height: 300px;
+    padding: 50px;
+    box-shadow: 10px 10px 0px 15px;
+}
+
+.detailsInfo {
+    font-size: 20px;
+    margin-bottom: 150px;
+}
+
+.detailsButton {
+    text-align: center;
+}
+
+.detailsButton > button {
+    width: 150px;
+    padding: 5px;
+    font-size: 19px;
+    border-radius: 15px;
+    border: none;
+    background-color: #90d3ff;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.detailsButton > button:hover {
+    width: 200px;
+}
+
+.editContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.editContainer > input {
+    width: 250px;
+    max-width: 250px;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.editContainer > textarea {
+    width: 450px;
+    max-width: 450px;
+    font-size: 20px; 
+    height: 200px;  
+    margin-bottom: -120px;
+
+}
+
+.invisibleBtn {
+    display: none;
+}
+
+
+.error {
+    text-align: center;
+    top: 100px;
+    position: relative;
+    font-size: 50px;
+}

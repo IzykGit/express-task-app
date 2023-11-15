@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/Head.ejs') %>
+
+    <body>
+        <div class="error">
+            <h1>404 Error :(</h1>
+            <p>This page does not exist!</p>
+            <button id="return">Return to Task Page</button>
+        </div>
+
+        <script>
+            const returnBtn = document.getElementById('return');
+
+            returnBtn.addEventListener('click', () => {
+                window.location.href = '/tasks'
+            })
+        </script>
+        
+    </body>
+</html>

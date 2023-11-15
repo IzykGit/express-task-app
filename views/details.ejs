@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <%- include('./partials/Head.ejs') %>
+
+    <body>
+        <%- include('./partials/create.ejs') %>
+
+        <div style="justify-content: center; display: flex;">
+            <div class="details">
+                <div class="detailsInfo">
+                    <h2 id="taskTitle"><%= task.title %></h2>
+                    <p id="taskBody"><%= task.body %></p>
+                    <div class="editContainer">
+                        <input id="editTitle" class="invisibleBtn" type="text" placeholder="Edit Task"/>
+                        <textarea id="editBody" class="invisibleBtn" placeholder="Edit Task Info"></textarea>
+                    </div>
+
+                </div>
+                <div class="detailsButton">
+                    <button id="delTask" data-taskid="<%= task._id %>">Delete</button>
+                    <button id="editTask" >Edit</button>
+                    <button class="invisibleBtn" id="saveTask" data-taskid="<%= task._id %>">Save</button>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+            const editTask = document.getElementById('editTask');
+            const delTask = document.getElementById('delTask');
+            const saveTask = document.getElementById('saveTask')
+
+            const taskId = delTask.getAttribute('data-taskid')
+
+            const taskTitle = document.getElementById('taskTitle');
+            const taskBody = document.getElementById('taskBody');
+
+            const editTitle = document.getElementById('editTitle');
+            const editBody = document.getElementById('editBody')
+
+
+
+            console.log("Task ID:", taskId);
+
+            delTask.addEventListener('click', () => {
+                console.log("Task ID:", taskId);
+
+                fetch(`/details/${taskId}`, {
+                    method: "DELETE"
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/tasks';
+                    } else {
+                        alert('Deletion Failed');
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            });
+
+
+            editTask.addEventListener('click', () => {
+                editTask.classList.add('invisibleBtn');
+                taskTitle.classList.add('invisibleBtn');
+                taskBody.classList.add('invisibleBtn');
+
+
+                saveTask.classList.remove('invisibleBtn');
+                editTitle.classList.remove('invisibleBtn');
+                editBody.classList.remove('invisibleBtn');
+
+
+            })
+
+
+            saveTask.addEventListener('click', () => {
+
+                changeBtn()
+
+                const updatedInfo = {
+                    title: editTitle.value,
+                    body: editBody.value
+                }
+                
+                fetch(`/details/${taskId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(updatedInfo)
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log("Success")
+                        window.location.reload();
+
+                } else {
+                    alert('Failed Update')
+                }
+                })
+                .catch(err => {
+                console.log(err)
+                })
+
+            })
+
+            function changeBtn() {
+                editTask.classList.remove('invisibleBtn');
+                taskTitle.classList.remove('invisibleBtn');
+                taskBody.classList.remove('invisibleBtn');
+
+
+                saveTask.classList.add('invisibleBtn');
+                editTitle.classList.add('invisibleBtn');
+                editBody.classList.add('invisibleBtn');
+
+            }
+
+
+            
+        </script>
+    </body>
+</html>

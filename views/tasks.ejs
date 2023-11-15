@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+        <%- include('./partials/head.ejs') %>
+    <body>
+        <%- include('./partials/create.ejs') %>
+
+        <% if (result.length > 0) { %>
+            <% result.forEach(result => { %>
+                <div style="justify-content: center; display: flex;">
+                    <div class="task">
+                        <a style="color: black; text-decoration: none;" href="/details/<%= result._id %>">
+                            <h1><%= result.title %></h1>
+                            <h3><%= result.body %></h3>
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div style="justify-content: center; display: flex;">
+                <h3 class="task" style="font-size: 20px;">No Tasks Yet</h3>
+            </div>
+        <% } %>
+    </body>
+</html>
